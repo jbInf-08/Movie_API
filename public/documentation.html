@@ -11,5 +11,90 @@
         application will provide users with access to information about different
         movies, directors, and genres. Users will be able to sign up, update their
         personal information, and create a list of their favorite movies</p>
+    <h2>API Endpoints</h2>
+    <ul>
+        <li>
+            <strong>Return a list of ALL movies</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/movies</code></p>
+            <p>Method Type: GET</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: JSON</p>
+            <p>High-level Description: Returns a list of top 10 movies.</p>
+        </li>
+        <li>
+            <strong>Return data about a single movie by title</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/movies/:title</code></p>
+            <p>Method Type: GET</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: JSON</p>
+            <p>High-level Description: Returns data about a movie based on its title.</p>
+        </li>
+        <li>
+            <strong>Return data about a genre by name</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/genres/:genre</code></p>
+            <p>Method Type: GET</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: JSON</p>
+            <p>High-level Description: Returns data about a genre based on its name.</p>
+        </li>
+        <li>
+            <strong>Return data about a director by name</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/directors/:director</code></p>
+            <p>Method Type: GET</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: JSON</p>
+            <p>High-level Description: Returns data about a director based on their name.</p>
+        </li>
+        <li>
+            <strong>Allow new users to register</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/users</code></p>
+            <p>Method Type: POST</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: JSON object containing user information (e.g., username, password)</p>
+            <p>Response Data Format: Plain text or JSON</p>
+            <p>High-level Description: Allows new users to register.</p>
+        </li>
+        <li>
+            <strong>Allow users to update their user info (username)</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/users/:id</code></p>
+            <p>Method Type: PUT</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: JSON object containing updated user information (e.g., new username)</p>
+            <p>Response Data Format: Plain text or JSON</p>
+            <p>High-level Description: Allows users to update their username.</p>
+        </li>
+        <li>
+            <strong>Allow users to add a movie to their list of favorites</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/users/:userId/favorites</code></p>
+            <p>Method Type: POST</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: JSON object containing movie information (e.g., movie ID)</p>
+            <p>Response Data Format: Plain text or JSON</p>
+            <p>High-level Description: Allows users to add a movie to their list of favorites.</p>
+        </li>
+        <li>
+            <strong>Allow users to remove a movie from their list of favorites</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/users/:userId/favorites/:movieId</code></p>
+            <p>Method Type: DELETE</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: Plain text or JSON</p>
+            <p>High-level Description: Allows users to remove a movie from their list of favorites.</p>
+        </li>
+        <li>
+            <strong>Allow existing users to deregister</strong>
+            <p>Endpoint URL: <code>http://localhost:8080/users/:userId</code></p>
+            <p>Method Type: DELETE</p>
+            <p>Query Parameters: None</p>
+            <p>Expected Body: None</p>
+            <p>Response Data Format: Plain text or JSON</p>
+            <p>High-level Description: Allows existing users to deregister.</p>
+        </li>
+    </ul>
 </body>
 </html>
+
