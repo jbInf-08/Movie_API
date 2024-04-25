@@ -47,3 +47,5 @@
 ::1 - - [25/Apr/2024:21:54:27 +0000] "GET /movies HTTP/1.1" 200 1678 "-" "PostmanRuntime/7.37.3"
 ::1 - - [25/Apr/2024:21:55:26 +0000] "GET /movies/The%20Shawshank%20Redemption/director HTTP/1.1" 200 16 "-" "PostmanRuntime/7.37.3"
 ::1 - - [25/Apr/2024:21:56:24 +0000] "GET /movies/The%20Shawshank%20Redemption HTTP/1.1" 200 270 "-" "PostmanRuntime/7.37.3"
+::ffff:127.0.0.1 - - [25/Apr/2024:22:01:53 +0000] "GET / HTTP/1.1" 200 24 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
+::ffff:127.0.0.1 - - [25/Apr/2024:22:01:53 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
