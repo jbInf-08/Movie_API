@@ -1,223 +1,144 @@
 const express = require('express');
 const app = express();
-const fs = require('fs'); 
+const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const uuid = require('uuid');
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+const Movies = Models.Movie;
+const Users = Models.User;
 
-const top10Movies = [
-    { title: 'The Shawshank Redemption', year: 1994, rating: 9.3 },
-    { title: 'The Godfather', year: 1972, rating: 9.2 },
-    { title: 'The Godfather: Part II', year: 1974, rating: 9.0 },
-    { title: 'The Dark Knight', year: 2008, rating: 9.0 },
-    { title: '12 Angry Men', year: 1957, rating: 8.9 },
-    { title: "Schindler's List", year: 1993, rating: 8.9 },
-    { title: 'The Lord of the Rings: The Return of the King', year: 2003, rating: 8.9 },
-    { title: 'Pulp Fiction', year: 1994, rating: 8.9 },
-    { title: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001, rating: 8.8 },
-    { title: 'Fight Club', year: 1999, rating: 8.8 }
-];
-
-// Create a write stream (in append mode) for logging
-const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
-
-// Set up middleware for logging
-app.use(morgan('combined', { stream: accessLogStream }));
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+mongoose.connect('mongodb://localhost:27017/movie_api', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
-// Middleware to parse JSON bodies
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 
-// Array to store user data
-let users = [
-    {
-        id: '1',
-        fullname: 'John Doe',
-        email: 'johndoe@mail.com',
-        favMovies: [{
-        }]
-    },
-    {
-        id: '2',
-        fullname: 'Jane Doe',
-        email: 'janedoe@mail.com',
-        favMovies: [{
-        }]
-    }
-];
-
-// Array to store movie data
-const movies = [
-  {
-      title: 'The Shawshank Redemption',
-      description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-      genre: 'Drama',
-      director: 'Frank Darabont',
-      imageUrl: 'https://imageurl.com/shawshank_redemption'
-  },
-  {
-      title: 'The Godfather',
-      description: 'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-      genre: 'Crime',
-      director: 'Francis Ford Coppola',
-      imageUrl: 'https://imageurl.com/the_godfather'
-  },
-  {
-      title: 'The Dark Knight',
-      description: 'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.',
-      genre: 'Action',
-      director: 'Christopher Nolan',
-      imageUrl: 'https://imageurl.com/the_dark_knight'
-  },
-  {
-      title: 'Inception',
-      description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
-      genre: 'Sci-Fi',
-      director: 'Christopher Nolan',
-      imageUrl: 'https://imageurl.com/inception'
-  },
-  {
-      title: 'Pulp Fiction',
-      description: 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
-      genre: 'Crime',
-      director: 'Quentin Tarantino',
-      imageUrl: 'https://imageurl.com/pulp_fiction'
-  },
-  {
-      title: 'The Lord of the Rings: The Fellowship of the Ring',
-      description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
-      genre: 'Fantasy',
-      director: 'Peter Jackson',
-      imageUrl: 'https://imageurl.com/lotr_fellowship'
-  }
-];
-
-// Root route
 app.get('/', (req, res) => {
-    res.send('Welcome to my movie API!');
+  res.send('Welcome to my movie API!');
 });
 
-// READ route for movies
+// Return a list of ALL movies
 app.get('/movies', (req, res) => {
-    res.status(200).json(movies);
+  Movies.find()
+    .then(movies => res.status(200).json(movies))
+    .catch(err => res.status(500).send(err));
 });
 
-// READ by title
+// Return data about a single movie by title
 app.get('/movies/:title', (req, res) => {
-    const { title } = req.params;
-    const movie = movies.find(movie => movie.title === title);
-
-    if (movie) {
+  const { title } = req.params;
+  Movies.findOne({ Title: title })
+    .then(movie => {
+      if (movie) {
         res.status(200).json(movie);
-    } else {
+      } else {
         res.status(404).send('Movie not found :(');
-    }
+      }
+    })
+    .catch(err => res.status(500).send(err));
 });
 
-// READ Genre by title
-app.get('/movies/:title/genre', (req, res) => {
-    const { title } = req.params;
-    const movie = movies.find(movie => movie.title === title);
-
-    if (movie) {
-        res.status(200).json(movie.genre);
-    } else {
-        res.status(404).send('Movie not found :(');
-    }
+// Return data about a genre by name
+app.get('/genres/:genre', (req, res) => {
+  const { genre } = req.params;
+  Movies.find({ 'Genre.Name': genre })
+    .then(movies => {
+      if (movies.length > 0) {
+        const genreData = {
+          Name: genre,
+          Description: movies[0].Genre.Description
+        };
+        res.status(200).json(genreData);
+      } else {
+        res.status(404).send('Genre not found :(');
+      }
+    })
+    .catch(err => res.status(500).send(err));
 });
 
-// READ Director by title
-app.get('/movies/:title/director', (req, res) => {
-    const { title } = req.params;
-    const movie = movies.find(movie => movie.title === title);
-
-    if (movie) {
-        res.status(200).json(movie.director);
-    } else {
-        res.status(404).send('Movie not found :(');
-    }
+// Return data about a director by name
+app.get('/directors/:director', (req, res) => {
+  const { director } = req.params;
+  Movies.find({ 'Director.Name': director })
+    .then(movies => {
+      if (movies.length > 0) {
+        const directorData = {
+          Name: director,
+          Bio: movies[0].Director.Bio,
+          Birth: movies[0].Director.Birth,
+          Death: movies[0].Director.Death
+        };
+        res.status(200).json(directorData);
+      } else {
+        res.status(404).send('Director not found :(');
+      }
+    })
+    .catch(err => res.status(500).send(err));
 });
 
-// Create new user
+// Allow new users to register
 app.post('/users', (req, res) => {
-    const newUser = req.body;
-    if (newUser.fullname) {
-        newUser.id = uuid.v4();
-        users.push(newUser);
-        res.status(201).json(newUser);
-    } else {
-        res.status(400).send('user needs name');
-    }
+  const newUser = new Users(req.body);
+  newUser.save()
+    .then(user => res.status(201).json(user))
+    .catch(err => res.status(400).send(err));
 });
 
-// Update username
+// Allow users to update their user info (username)
 app.put('/users/:id', (req, res) => {
-    const { id } = req.params;
-    const updatedUser = req.body;
-
-    let user = users.find(user => user.id == id);
-
-    if (user) {
-        user.fullname = updatedUser.fullname;
+  const { id } = req.params;
+  Users.findByIdAndUpdate(id, { $set: { Username: req.body.Username } }, { new: true })
+    .then(user => {
+      if (user) {
         res.status(200).json(user);
-    } else {
-        res.status(400).send('not a registered user');
-    }
+      } else {
+        res.status(404).send('User not found :(');
+      }
+    })
+    .catch(err => res.status(400).send(err));
 });
 
-// Update user's favorite movie
-app.post('/users/:id/:title', (req, res) => {
-    const { id, title } = req.params;
-
-    let user = users.find(user => user.id == id);
-    let newTitle = {
-        title,
-        director: req.body.director,
-        genre: req.body.genre
-    };
-
-    if (user) {
-        user.favMovies.push(newTitle);
-        res.status(200).send('user\'s favorite movies have been updated');
-    } else {
-        res.status(400).send('could not update favorite movies');
-    }
+// Allow users to add a movie to their list of favorites
+app.post('/users/:userId/favorites', (req, res) => {
+  const { userId } = req.params;
+  const { movieId } = req.body;
+  Movies.findById(movieId)
+    .then(movie => {
+      if (movie) {
+        Users.findByIdAndUpdate(userId, { $push: { FavoriteMovies: movie } }, { new: true })
+          .then(user => {
+            res.status(200).send('User\'s favorite movies have been updated');
+          })
+          .catch(err => res.status(400).send(err));
+      } else {
+        res.status(404).send('Movie not found :(');
+      }
+    })
+    .catch(err => res.status(500).send(err));
 });
 
-// Delete a favorite movie
-app.delete('/users/:id/:title', (req, res) => {
-    const { id, title } = req.params;
-    let user = users.find(user => user.id == id);
-
-    if (user) {
-        user.favMovies = user.favMovies.filter(m => m.title !== title);
-        res.status(200).send('Movie deleted successfully');
-    } else {
-        res.status(400).send('could not update favorite movies');
-    }
+// Allow users to remove a movie from their list of favorites
+app.delete('/users/:userId/favorites/:movieId', (req, res) => {
+  const { userId, movieId } = req.params;
+  Users.findByIdAndUpdate(userId, { $pull: { FavoriteMovies: movieId } })
+    .then(() => res.status(200).send('Movie deleted successfully'))
+    .catch(err => res.status(400).send(err));
 });
 
 // Delete a user
 app.delete('/users/:id/', (req, res) => {
     const { id } = req.params;
-    let user = users.find(user => user.id == id);
-
-    if (user) {
-        users = users.filter(user => user.id !== id);
-        res.status(200).send('user has been deleted');
-    } else {
-        res.status(400).send('could not update user');
-    }
+    Users.findOneAndDelete({ _id: id })
+        .then(() => res.status(200).send('User has been deleted'))
+        .catch(err => res.status(400).send(err));
 });
 
-// Server
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
