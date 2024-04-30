@@ -69,3 +69,6 @@
 ::1 - - [29/Apr/2024:20:52:42 +0000] "DELETE /users/662ff2e44da055708e530cc7 HTTP/1.1" 500 1453 "-" "PostmanRuntime/7.37.3"
 ::1 - - [29/Apr/2024:20:54:47 +0000] "DELETE /users/662ff2e44da055708e530cc7 HTTP/1.1" 500 1453 "-" "PostmanRuntime/7.37.3"
 ::1 - - [29/Apr/2024:20:56:59 +0000] "DELETE /users/662ff2e44da055708e530cc7 HTTP/1.1" 200 21 "-" "PostmanRuntime/7.37.3"
+::1 - - [29/Apr/2024:21:38:31 +0000] "GET /movies HTTP/1.1" 200 11308 "-" "PostmanRuntime/7.37.3"
+::1 - - [30/Apr/2024:14:29:54 +0000] "GET /movies HTTP/1.1" 200 11308 "-" "PostmanRuntime/7.37.3"
+::1 - - [30/Apr/2024:14:30:04 +0000] "GET /movies/The%20Shawshank%20Redemption HTTP/1.1" 200 620 "-" "PostmanRuntime/7.37.3"

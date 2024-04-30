@@ -10,14 +10,62 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 mongoose.connect('mongodb://localhost:27017/movie_api', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), { flags: 'a' });
 app.use(morgan('combined', { stream: accessLogStream }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Integrate auth.js into the app
+require('./auth')(app);
+
+// Require the Passport module and import the “passport.js” file
+const passport = require('passport');
+require('./passport');
+
+// Passport middleware for JWT authentication
+app.use(passport.initialize());
+
+// Passport JWT authentication strategy
+const passportJWT = require('passport-jwt');
+const ExtractJWT = passportJWT.ExtractJwt;
+const JWTStrategy = passportJWT.Strategy;
+
+passport.use(new JWTStrategy({
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: process.env.JWT_SECRET // Use environment variable for JWT secret
+}, async (jwtPayload, done) => {
+    try {
+        const user = await Users.findById(jwtPayload._id);
+        if (!user) {
+            return done(null, false, { message: 'User not found' });
+        }
+        return done(null, user);
+    } catch (error) {
+        return done(error);
+    }
+}));
+
+// Apply JWT authentication middleware to all routes except /users POST
+app.use((req, res, next) => {
+    if (req.path === '/users' && req.method === 'POST') {
+        return next();
+    }
+    passport.authenticate('jwt', { session: false }, (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+        req.user = user;
+        return next();
+    })(req, res, next);
+});
+
+// Routes
 app.get('/', (req, res) => {
   res.send('Welcome to my movie API!');
 });
