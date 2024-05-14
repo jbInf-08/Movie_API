@@ -1,0 +1,91 @@
+[
+    {
+      "_id": {"$oid": "662db342b4282de47946b79b"},
+      "username": "jane_smith",
+      "fullName": "Jane Smith",
+      "birthday": {"$date": "1990-05-10T00:00:00Z"},
+      "favoriteMovies": [
+        {"$oid": "60980c016949384baf8ee982"},
+        {"$oid": "60980c016949384baf8ee983"}
+      ]
+    },
+    {
+      "_id": {"$oid": "662db342b4282de47946b79c"},
+      "username": "alex_james",
+      "fullName": "Alex James",
+      "birthday": {"$date": "1988-09-30T00:00:00Z"},
+      "favoriteMovies": [
+        {"$oid": "60980c016949384baf8ee984"},
+        {"$oid": "60980c016949384baf8ee985"}
+      ]
+    },
+    {
+      "_id": {"$oid": "662db342b4282de47946b79d"},
+      "username": "emily_brown",
+      "fullName": "Emily Brown",
+      "birthday": {"$date": "1995-11-15T00:00:00Z"},
+      "favoriteMovies": [{"$oid": "60980c016949384baf8ee986"}]
+    },
+    {
+      "_id": {"$oid": "662db342b4282de47946b79e"},
+      "username": "michael_johnson",
+      "fullName": "Michael Johnson",
+      "birthday": {"$date": "1983-07-25T00:00:00Z"},
+      "favoriteMovies": [
+        {"$oid": "60980c016949384baf8ee987"},
+        {"$oid": "60980c016949384baf8ee988"}
+      ]
+    },
+    {
+      "_id": {"$oid": "662ebac442adb2332a46b7a3"},
+      "username": "john_doe",
+      "fullName": "John Doe",
+      "birthday": {"$date": "1985-02-19T00:00:00Z"},
+      "favoriteMovies": [
+        {"$ref": "movies", "$id": {"$oid": "662eaa0f42adb2332a46b799"}},
+        {"$ref": "movies", "$id": {"$oid": "662eab0542adb2332a46b79a"}},
+        {"$ref": "movies", "$id": {"$oid": "662eabcd42adb2332a46b79b"}}
+      ]
+    },
+    {
+      "_id": {"$oid": "662ebb4e42adb2332a46b7a4"},
+      "username": "jane_smith",
+      "fullName": "Jane Smith",
+      "birthday": {"$date": "1990-05-10T00:00:00Z"},
+      "favoriteMovies": [
+        {"$ref": "movies", "$id": {"$oid": "662eabcd42adb2332a46b79b"}},
+        {"$ref": "movies", "$id": {"$oid": "662eb07542adb2332a46b79c"}},
+        {"$ref": "movies", "$id": {"$oid": "662eb13842adb2332a46b79d"}}
+      ]
+    },
+    {
+      "_id": {"$oid": "662ebbd142adb2332a46b7a5"},
+      "username": "alex_james",
+      "fullName": "Alex James",
+      "birthday": {"$date": "1988-09-30T00:00:00Z"},
+      "favoriteMovies": [
+        {"$ref": "movies", "$id": {"$oid": "662eab0542adb2332a46b79a"}},
+        {"$ref": "movies", "$id": {"$oid": "662eabcd42adb2332a46b79b"}},
+        {"$ref": "movies", "$id": {"$oid": "662eb07542adb2332a46b79c"}}
+      ]
+    },
+    {
+      "_id": {"$oid": "662ebc3242adb2332a46b7a6"},
+      "username": "emily_brown",
+      "fullName": "Emily Brown",
+      "birthday": {"$date": "1995-11-15T00:00:00Z"},
+      "favoriteMovies": [
+        {"$ref": "movies", "$id": {"$oid": "662eb07542adb2332a46b79c"}}
+      ]
+    },
+    {
+      "_id": {"$oid": "662ebc9242adb2332a46b7a7"},
+      "username": "michael_jackson",
+      "fullName": "Michael Jackson",
+      "birthday": {"$date": "1983-07-25T00:00:00Z"},
+      "favoriteMovies": [
+        {"$ref": "movies", "$id": {"$oid": "662eb13842adb2332a46b79d"}}
+      ]
+    }
+  ]
+  

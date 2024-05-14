@@ -1,0 +1,220 @@
+[
+    {
+      "_id": {"$oid": "662da04db4282de47946b799"},
+      "Title": "Inception",
+      "Description": "A thief who enters the dreams of others to steal secrets",
+      "Genre": {
+        "Name": "Sci-Fi",
+        "Description": "Science fiction film explores speculative fiction and the imaginative exploration of scientific concepts"
+      },
+      "Director": {
+        "Name": "Christopher Nolan",
+        "Bio": "British-American film director, screenwriter, and producer",
+        "Birth": "1970",
+        "Death": null
+      },
+      "ImagePath": "inception.jpg",
+      "Featured": true
+    },
+    {
+      "_id": {"$oid": "662eaa0f42adb2332a46b799"},
+      "Title": "Inception",
+      "Description": "A thief who enters the dreams of others to steal secrets and ideas",
+      "Genre": {
+        "Name": "Sci-Fi",
+        "Description": "Science fiction film explores speculative fiction and the imaginative exploration of scientific concepts"
+      },
+      "Director": {
+        "Name": "Christopher Nolan",
+        "Bio": "British-American film director, screenwriter, and producer known for his distinctive style and narrative structure",
+        "Birth": "1970",
+        "Death": null
+      },
+      "ImagePath": "inception.jpg",
+      "Featured": true,
+      "Actors": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page", "Tom Hardy"],
+      "Rating": 8.8,
+      "ReleaseYear": 2010
+    },
+    {
+      "_id": {"$oid": "662eab0542adb2332a46b79a"},
+      "Title": "The Dark Knight",
+      "Description": "A vigilante Batman works with police and DA to clean Gotham City",
+      "Genre": {
+        "Name": "Action",
+        "Description": "Action film emphasizes physical feats, dangerous stunts, and exciting scenes"
+      },
+      "Director": {
+        "Name": "Christopher Nolan",
+        "Bio": "British-American film director, screenwriter, and producer known for his distinctive style and narrative structure",
+        "Birth": "1970",
+        "Death": null
+      },
+      "ImagePath": "dark_knight.jpg",
+      "Featured": true,
+      "Actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Gary Oldman"],
+      "Rating": 9,
+      "ReleaseYear": 2008
+    },
+    {
+      "_id": {"$oid": "662eabcd42adb2332a46b79b"},
+      "Title": "Interstellar",
+      "Description": "A group of astronauts travel through a wormhole in search of a new habitable planet",
+      "Genre": {
+        "Name": "Sci-Fi",
+        "Description": "Science fiction film explores speculative fiction and the imaginative exploration of scientific concepts"
+      },
+      "Director": {
+        "Name": "Christopher Nolan",
+        "Bio": "British-American film director, screenwriter, and producer known for his distinctive style and narrative structure",
+        "Birth": "1970",
+        "Death": null
+      },
+      "ImagePath": "interstellar.jpg",
+      "Featured": true,
+      "Actors": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain", "Michael Caine"],
+      "Rating": 8.6,
+      "ReleaseYear": 2014
+    },
+    {
+      "_id": {"$oid": "662eb07542adb2332a46b79c"},
+      "Title": "The Shawshank Redemption",
+      "Description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency",
+      "Genre": {
+        "Name": "Drama",
+        "Description": "Film genre that focuses on character development and the emotional journey of the characters"
+      },
+      "Director": {
+        "Name": "Frank Darabont",
+        "Bio": "American film director, screenwriter, and producer",
+        "Birth": "1959",
+        "Death": null
+      },
+      "ImagePath": "shawshank_redemption.jpg",
+      "Featured": true,
+      "Actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler"],
+      "Rating": 9.3,
+      "ReleaseYear": 1994
+    },
+    {
+      "_id": {"$oid": "662eb13842adb2332a46b79d"},
+      "Title": "The Godfather",
+      "Description": "An aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son",
+      "Genre": {
+        "Name": "Crime",
+        "Description": "Film genre that revolves around the actions of criminals, particularly the planning and execution of illegal activities"
+      },
+      "Director": {
+        "Name": "Francis Ford Coppola",
+        "Bio": "American film director, producer, and screenwriter",
+        "Birth": "1939",
+        "Death": null
+      },
+      "ImagePath": "godfather.jpg",
+      "Featured": true,
+      "Actors": ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall"],
+      "Rating": 9.2,
+      "ReleaseYear": 1972
+    },
+    {
+      "_id": {"$oid": "662eb2ca42adb2332a46b79e"},
+      "Title": "Pulp Fiction",
+      "Description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption",
+      "Genre": {
+        "Name": "Crime",
+        "Description": "Film genre that revolves around the actions of criminals, particularly the planning and execution of illegal activities"
+      },
+      "Director": {
+        "Name": "Quentin Tarantino",
+        "Bio": "American film director, screenwriter, and producer",
+        "Birth": "1963",
+        "Death": null
+      },
+      "ImagePath": "pulp_fiction.jpg",
+      "Featured": true,
+      "Actors": ["John Travolta", "Uma Thurman", "Samuel L. Jackson", "Bruce Willis"],
+      "Rating": 8.9,
+      "ReleaseYear": 1994
+    },
+    {
+      "_id": {"$oid": "662eb3ee42adb2332a46b79f"},
+      "Title": "Forrest Gump",
+      "Description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart",
+      "Genre": {
+        "Name": "Drama",
+        "Description": "Film genre that focuses on character development and the emotional journey of the characters"
+      },
+      "Director": {
+        "Name": "Robert Zemeckis",
+        "Bio": "American film director, producer, and screenwriter",
+        "Birth": "1951",
+        "Death": null
+      },
+      "ImagePath": "forrest_gump.jpg",
+      "Featured": true,
+      "Actors": ["Tom Hanks", "Robin Wright", "Gary Sinise", "Sally Field"],
+      "Rating": 8.8,
+      "ReleaseYear": 1994
+    },
+    {
+      "_id": {"$oid": "662eb54442adb2332a46b7a0"},
+      "Title": "The Matrix",
+      "Description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers",
+      "Genre": {
+        "Name": "Sci-Fi",
+        "Description": "Science fiction film explores speculative fiction and the imaginative exploration of scientific concepts"
+      },
+      "Director": {
+        "Name": "Lana Wachowski",
+        "Bio": "American film director, screenwriter, and producer",
+        "Birth": "1965",
+        "Death": null
+      },
+      "ImagePath": "matrix.jpg",
+      "Featured": true,
+      "Actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving"],
+      "Rating": 8.7,
+      "ReleaseYear": 1999
+    },
+    {
+      "_id": {"$oid": "662eb5eb42adb2332a46b7a1"},
+      "Title": "Inglourious Basterds",
+      "Description": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same",
+      "Genre": {
+        "Name": "War",
+        "Description": "Film genre that portrays warfare and its impact on society and individuals"
+      },
+      "Director": {
+        "Name": "Quentin Tarantino",
+        "Bio": "American film director, screenwriter, and producer",
+        "Birth": "1963",
+        "Death": null
+      },
+      "ImagePath": "inglourious_basterds.jpg",
+      "Featured": true,
+      "Actors": ["Brad Pitt", "Diane Kruger", "Eli Roth", "Christoph Waltz"],
+      "Rating": 8.3,
+      "ReleaseYear": 2009
+    },
+    {
+      "_id": {"$oid": "662eb69842adb2332a46b7a2"},
+      "Title": "Fight Club",
+      "Description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more",
+      "Genre": {
+        "Name": "Drama",
+        "Description": "Film genre that focuses on character development and the emotional journey of the characters"
+      },
+      "Director": {
+        "Name": "David Fincher",
+        "Bio": "American film director and producer",
+        "Birth": "1962",
+        "Death": null
+      },
+      "ImagePath": "fight_club.jpg",
+      "Featured": true,
+      "Actors": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter", "Meat Loaf"],
+      "Rating": 8.8,
+      "ReleaseYear": 1999
+    }
+  ]
+  

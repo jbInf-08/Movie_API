@@ -13,8 +13,11 @@ const authenticateUser = async (req, res) => {
   const { Username, Password } = req.body;
 
   try {
-    const user = await Users.findOne({ Username });
 
+    const user = await Users.findOne({ Username: Username });
+    console.log(`User: ${user}`);
+    
+    console.log(user.validatePassword(Password))
     if (!user || !user.validatePassword(Password)) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
