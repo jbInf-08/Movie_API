@@ -14,6 +14,7 @@ const ExtractJWT = passportJWT.ExtractJwt;
 const JWTStrategy = passportJWT.Strategy;
 const cors = require('cors'); // Import the cors middleware
 const { authenticateUser } = require('./auth'); // Import authenticateUser function
+const { check, validationResult } = require('express-validator');
 
 mongoose.connect('mongodb://localhost:27017/movie_api', {
     useNewUrlParser: true,
@@ -141,10 +142,10 @@ app.post('/users', async (req, res) => {
 
         // Create a new user
         const newUser = new Users({
-            Username,
+            Username: req.body.Username,
             Password: hashedPassword,
-            Email,
-            Birthday
+            Email: req.body.Email,
+            Birthday: req.body.Birthday
         });
 
         await newUser.save();
