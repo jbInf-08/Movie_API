@@ -16,7 +16,12 @@ const cors = require('cors'); // Import the cors middleware
 const { authenticateUser } = require('./auth'); // Import authenticateUser function
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb://localhost:27017/movie_api', {
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true
+// });
+
+mongoose.connect(process.env.CONNECTION_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
