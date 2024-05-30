@@ -67,6 +67,11 @@ passport.use(new JWTStrategy({
     }
 }));
 
+// Root route
+app.get('/', (req, res) => {
+    res.send('Welcome to MyFlix API');
+  });
+
 // Route to handle login
 app.post('/login', async (req, res) => {
     await authenticateUser(req, res);
