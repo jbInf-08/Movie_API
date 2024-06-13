@@ -16,7 +16,7 @@ const cors = require('cors');
 const { authenticateUser } = require('./auth');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
-const allowedOrigins = ['http://localhost:1234'];
+const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com'];
 
 // Default values
 const connectionString = 'mongodb://localhost:27017/myFlixDB';
