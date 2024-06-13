@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
-const allowedOrigins = ['http://localhost:8080', 'http://your-frontend-origin.com'];
+const allowedOrigins = ['http://localhost:8080', 'http://your-frontend-origin.com', 'http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -78,7 +78,9 @@ app.post('/login', async (req, res) => {
 });
 
 // Routes and other endpoints
-app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
+
+// Route to fetch movies without authentication
+app.get('/movies', async (req, res) => {
     try {
         const movies = await Movies.find();
         res.status(200).json(movies);
