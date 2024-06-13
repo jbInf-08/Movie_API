@@ -38,10 +38,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
+const allowedOrigins = ['http://localhost:8080', 'http://your-frontend-origin.com', 'http://localhost:1234'];
 app.use(cors({
-    origin: '*', // Allow requests from this origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add other HTTP methods as needed
-    allowedHeaders: ['Content-Type', 'Authorization'], // Add headers needed by your application
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error(`Origin ${origin} is not allowed`));
+        }
+    },
+    credentials: true
 }));
 
 
