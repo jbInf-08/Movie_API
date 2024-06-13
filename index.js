@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
-const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com'];
+const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com', 'https://my-flix-api-faa857fcfb0f.herokuapp.com/'];
 
 app.use(cors({
     origin: function(origin, callback) {
