@@ -87,7 +87,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), async (req,
     }
 });
 
-app.get('/movies/:title', passport.authenticate('jwt', { session: false }), async (req, res) => {
+app.get('/movies/:title', async (req, res) => {
     try {
         const movie = await Movies.findOne({ Title: req.params.title });
         if (movie) {
