@@ -37,6 +37,15 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Allow requests from localhost:1234
+const corsOptions = {
+    origin: 'http://localhost:1234',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
+  
+  app.use(cors(corsOptions));
+
 // CORS configuration
 const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com', 'https://my-flix-api-faa857fcfb0f.herokuapp.com/'];
 
