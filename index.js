@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 
 // CORS configuration
 app.use(cors({
-    origin: 'https://my-flix-api-faa857fcfb0f.herokuapp.com/',
+    origin: 'http://localhost:1234',
     optionsSuccessStatus: 200
   }));
   
