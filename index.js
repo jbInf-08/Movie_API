@@ -38,9 +38,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
-const cors = require('cors'); /* To include CORS within the application */
-app.use(cors());              /* This code will allow requests from all origins(CORS) */
-let auth = require('./auth')(app); /* To import auth.js file into this project. The app argument you're passing here, ensures that Express is available in your “auth.js” file as well. */
+app.use(cors({
+    origin: 'http://localhost:1234',
+    credentials: true
+  }));
+  
+  let auth = require('./auth')(app);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -62,7 +65,7 @@ passport.use(new JWTStrategy({
 // Root route
 app.get('/', (req, res) => {
     res.send('Welcome to MyFlix API');
-  });
+});
 
 // Route to handle login
 app.post('/login', async (req, res) => {
@@ -197,27 +200,26 @@ app.post('/users/:userId/favorites', passport.authenticate('jwt', { session: fal
 app.delete('/users/:userId/favorites/:movieId', passport.authenticate('jwt', { session: false }), async (req, res) => {
     try {
         await Users.findByIdAndUpdate(req.params.userId, { $pull: { FavoriteMovies: req.params.movieId } });
-        res.status(200).send('Movie deleted successfully'
-    );
-} catch (err) {
-    res.status(400).send(err);
-}
+        res.status(200).send('Movie deleted successfully');
+    } catch (err) {
+        res.status(400).send(err);
+    }
 });
 
 app.delete('/users/:id/', passport.authenticate('jwt', { session: false }), async (req, res) => {
-try {
-    const deletedUser = await Users.findOneAndDelete({ _id: req.params.id });
-    if (deletedUser) {
-        res.status(200).send('User has been deleted');
-    } else {
-        res.status(404).send('User not found :(');
+    try {
+        const deletedUser = await Users.findOneAndDelete({ _id: req.params.id });
+        if (deletedUser) {
+            res.status(200).send('User has been deleted');
+        } else {
+            res.status(404).send('User not found :(');
+        }
+    } catch (err) {
+        res.status(400).send(err);
     }
-} catch (err) {
-    res.status(400).send(err);
-}
 });
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
