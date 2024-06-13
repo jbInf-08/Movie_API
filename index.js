@@ -39,8 +39,8 @@ app.use(bodyParser.json());
 
 // CORS configuration
 app.use(cors({
-    origin: 'http://localhost:1234',
-    credentials: true
+    origin: 'https://my-flix-api-faa857fcfb0f.herokuapp.com/',
+    optionsSuccessStatus: 200
   }));
   
   let auth = require('./auth')(app);
