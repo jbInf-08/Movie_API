@@ -39,12 +39,10 @@ app.use(bodyParser.json());
 
 // CORS configuration
 app.use(cors({
-    origin: '*',
+    origin: 'http://localhost:1234', // Allow requests from this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add other HTTP methods as needed
     allowedHeaders: ['Content-Type', 'Authorization'], // Add headers needed by your application
 }));
-  
-  let auth = require('./auth')(app);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -68,23 +66,17 @@ app.get('/', (req, res) => {
     res.send('Welcome to MyFlix API');
 });
 
-// Route to handle login
-app.post('/login', async (req, res) => {
-    await authenticateUser(req, res);
-});
-
 // Routes and other endpoints
 
 // Route to fetch movies without authentication
 app.get('/movies', async (req, res) => {
-    await Movies.find()
-        .then((movies) => {
-            res.status(201).json(movies);
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-        });
+    try {
+        const movies = await Movies.find();
+        res.status(200).json(movies);
+    } catch (error) {
+        console.error('Error fetching movies:', error);
+        res.status(500).send('Error fetching movies');
+    }
 });
 
 app.get('/movies/:title', async (req, res) => {
