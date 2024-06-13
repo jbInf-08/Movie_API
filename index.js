@@ -44,6 +44,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], // Add headers needed by your application
 }));
 
+
 // Passport middleware
 app.use(passport.initialize());
 passport.use(new JWTStrategy({
