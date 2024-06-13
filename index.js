@@ -40,7 +40,6 @@ app.use(bodyParser.json());
 // CORS configuration
 app.use(cors({
     origin: 'http://localhost:1234',
-    optionsSuccessStatus: 200,
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add other HTTP methods as needed
     allowedHeaders: ['Content-Type', 'Authorization'], // Add headers needed by your application
 }));
