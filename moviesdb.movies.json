@@ -13,7 +13,7 @@
         "Birth": "1970",
         "Death": null
       },
-      "ImagePath": "inception.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i",
       "Featured": true
     },
     {
@@ -50,7 +50,7 @@
         "Birth": "1970",
         "Death": null
       },
-      "ImagePath": "dark_knight.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0468569/mediaviewer/rm4023877632/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart", "Gary Oldman"],
       "Rating": 9,
@@ -70,7 +70,7 @@
         "Birth": "1970",
         "Death": null
       },
-      "ImagePath": "interstellar.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0816692/mediaviewer/rm4043724800/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain", "Michael Caine"],
       "Rating": 8.6,
@@ -90,7 +90,7 @@
         "Birth": "1959",
         "Death": null
       },
-      "ImagePath": "shawshank_redemption.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0111161/mediaviewer/rm1690056449/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler"],
       "Rating": 9.3,
@@ -110,7 +110,7 @@
         "Birth": "1939",
         "Death": null
       },
-      "ImagePath": "godfather.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0068646/mediaviewer/rm746868224/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall"],
       "Rating": 9.2,
@@ -130,7 +130,7 @@
         "Birth": "1963",
         "Death": null
       },
-      "ImagePath": "pulp_fiction.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0110912/mediaviewer/rm1959546112/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["John Travolta", "Uma Thurman", "Samuel L. Jackson", "Bruce Willis"],
       "Rating": 8.9,
@@ -150,7 +150,7 @@
         "Birth": "1951",
         "Death": null
       },
-      "ImagePath": "forrest_gump.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0109830/mediaviewer/rm1954748672/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Tom Hanks", "Robin Wright", "Gary Sinise", "Sally Field"],
       "Rating": 8.8,
@@ -170,7 +170,7 @@
         "Birth": "1965",
         "Death": null
       },
-      "ImagePath": "matrix.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0133093/mediaviewer/rm525547776/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving"],
       "Rating": 8.7,
@@ -190,7 +190,7 @@
         "Birth": "1963",
         "Death": null
       },
-      "ImagePath": "inglourious_basterds.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0361748/mediaviewer/rm3163035648/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Brad Pitt", "Diane Kruger", "Eli Roth", "Christoph Waltz"],
       "Rating": 8.3,
@@ -210,7 +210,7 @@
         "Birth": "1962",
         "Death": null
       },
-      "ImagePath": "fight_club.jpg",
+      "ImagePath": "https://www.imdb.com/title/tt0137523/mediaviewer/rm1412004864/?ref_=tt_ov_i",
       "Featured": true,
       "Actors": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter", "Meat Loaf"],
       "Rating": 8.8,
