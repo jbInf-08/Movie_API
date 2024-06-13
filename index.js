@@ -38,18 +38,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
-const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
-
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error(`Origin ${origin} is not allowed`));
-        }
-    },
-    credentials: true
-}));
+const cors = require('cors'); /* To include CORS within the application */
+app.use(cors());              /* This code will allow requests from all origins(CORS) */
+let auth = require('./auth')(app); /* To import auth.js file into this project. The app argument you're passing here, ensures that Express is available in your “auth.js” file as well. */
 
 // Passport middleware
 app.use(passport.initialize());
@@ -82,12 +73,14 @@ app.post('/login', async (req, res) => {
 
 // Route to fetch movies without authentication
 app.get('/movies', async (req, res) => {
-    try {
-        const movies = await Movies.find();
-        res.status(200).json(movies);
-    } catch (err) {
-        res.status(500).send(err);
-    }
+    await Movies.find()
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 app.get('/movies/:title', async (req, res) => {
