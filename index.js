@@ -16,7 +16,6 @@ const cors = require('cors');
 const { authenticateUser } = require('./auth');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
-const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com'];
 
 // Default values
 const connectionString = 'mongodb://localhost:27017/myFlixDB';
@@ -39,6 +38,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS configuration
+const allowedOrigins = ['http://localhost:1234', 'http://localhost:8080', 'http://your-frontend-origin.com'];
+
 app.use(cors({
     origin: function(origin, callback) {
         // Allow requests with no origin (like mobile apps or curl requests)
